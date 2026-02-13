@@ -1,0 +1,8 @@
+name = "eeeemo-chatwork-relay"
+main = "chatwork-relay-worker.js"
+compatibility_date = "2026-02-10"
+workers_dev = true
+
+# Optional: lock down browser calls from only one origin.
+[vars]
+ALLOWED_ORIGIN = "http://localhost:8000"

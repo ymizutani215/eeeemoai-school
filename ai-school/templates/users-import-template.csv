@@ -1,0 +1,6 @@
+name,email,department,password,role
+山田 太郎,yamada@eeeemo.co.jp,営業,user123,member
+鈴木 花子,suzuki@eeeemo.co.jp,運用,,member
+佐藤 次郎,sato@eeeemo.co.jp,経理・総務,user123,member
+新人A,newhire-a@eeeemo.co.jp,新人研修,user123,member
+管理者B,admin2@eeeemo.co.jp,その他,admin123,admin

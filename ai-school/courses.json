@@ -1,0 +1,128 @@
+[
+  {
+    "id": "ai-sales-001",
+    "title": "営業提案書ドラフト自動化",
+    "category": "営業",
+    "duration": "18分",
+    "description": "提案書のたたき台をAIで短時間作成する方法を学びます。",
+    "departments": ["営業"],
+    "video": "./videos/ai-sales-001.mp4"
+  },
+  {
+    "id": "ai-sales-002",
+    "title": "商談メール最適化",
+    "category": "営業",
+    "duration": "14分",
+    "description": "返信率を上げる営業メールの生成と改善手順を解説します。",
+    "departments": ["営業", "その他"],
+    "video": "./videos/ai-sales-002.mp4"
+  },
+  {
+    "id": "ai-amz-001",
+    "title": "Amazon商品ページ改善",
+    "category": "Amazon運用",
+    "duration": "22分",
+    "description": "商品説明・箇条書き・SEOキーワードをAIで改善します。",
+    "departments": ["運用"],
+    "video": "./videos/ai-amz-001.mp4"
+  },
+  {
+    "id": "ai-amz-002",
+    "title": "Amazon広告レポート分析",
+    "category": "Amazon運用",
+    "duration": "19分",
+    "description": "広告レポートの要約と改善アクション抽出を行います。",
+    "departments": ["運用", "経理・総務"],
+    "video": "./videos/ai-amz-002.mp4"
+  },
+  {
+    "id": "ai-rkt-001",
+    "title": "楽天RPP運用の改善",
+    "category": "楽天運用",
+    "duration": "21分",
+    "description": "RPP運用の入札調整と改善案作成の手順を学びます。",
+    "departments": ["運用"],
+    "video": "./videos/ai-rkt-001.mp4"
+  },
+  {
+    "id": "ai-rkt-002",
+    "title": "楽天ページ文言の最適化",
+    "category": "楽天運用",
+    "duration": "16分",
+    "description": "訴求文・見出し・バナー文言をAIで整える方法です。",
+    "departments": ["運用", "営業"],
+    "video": "./videos/ai-rkt-002.mp4"
+  },
+  {
+    "id": "ai-site-001",
+    "title": "自社ECサイトFAQ生成",
+    "category": "自社サイト運用",
+    "duration": "13分",
+    "description": "問い合わせログからFAQを自動生成する手順を解説します。",
+    "departments": ["運用", "その他"],
+    "video": "./videos/ai-site-001.mp4"
+  },
+  {
+    "id": "ai-site-002",
+    "title": "商品LP改善案の作成",
+    "category": "自社サイト運用",
+    "duration": "20分",
+    "description": "LPの構成案・コピー案・ABテスト案をAIで作成します。",
+    "departments": ["運用", "営業"],
+    "video": "./videos/ai-site-002.mp4"
+  },
+  {
+    "id": "ai-newbie-001",
+    "title": "新人向けAI活用基礎",
+    "category": "新人研修",
+    "duration": "15分",
+    "description": "業務でのAI活用の基本と注意点を短時間で理解します。",
+    "departments": ["新人研修", "その他"],
+    "video": "./videos/ai-newbie-001.mp4"
+  },
+  {
+    "id": "ai-newbie-002",
+    "title": "情報漏洩を防ぐAI利用ルール",
+    "category": "新人研修",
+    "duration": "12分",
+    "description": "機密情報を守るための入力ルールとチェック方法を学びます。",
+    "departments": ["新人研修", "経理・総務", "その他"],
+    "video": "./videos/ai-newbie-002.mp4"
+  },
+  {
+    "id": "ai-prompt-001",
+    "title": "要約プロンプト集",
+    "category": "プロンプト集",
+    "duration": "11分",
+    "description": "議事録・レポート・長文資料に使える要約プロンプト集です。",
+    "departments": ["営業", "運用", "経理・総務", "その他", "新人研修"],
+    "video": "./videos/ai-prompt-001.mp4"
+  },
+  {
+    "id": "ai-prompt-002",
+    "title": "分析プロンプト集",
+    "category": "プロンプト集",
+    "duration": "17分",
+    "description": "売上・広告・顧客データ分析で使うプロンプトを紹介します。",
+    "departments": ["営業", "運用", "経理・総務", "その他"],
+    "video": "./videos/ai-prompt-002.mp4"
+  },
+  {
+    "id": "ai-mkt-001",
+    "title": "マーケ戦略立案の高速化",
+    "category": "マーケティング用",
+    "duration": "23分",
+    "description": "施策案とKPI案をAIで素早く作成する方法を解説します。",
+    "departments": ["運用", "営業"],
+    "video": "./videos/ai-mkt-001.mp4"
+  },
+  {
+    "id": "ai-mkt-002",
+    "title": "SNS投稿案の量産",
+    "category": "マーケティング用",
+    "duration": "16分",
+    "description": "SNS投稿の文案をテンプレ化して効率的に作る手順です。",
+    "departments": ["運用", "その他"],
+    "video": "./videos/ai-mkt-002.mp4"
+  }
+]

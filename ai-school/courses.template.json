@@ -1,0 +1,128 @@
+[
+  {
+    "id": "sales-001",
+    "title": "営業基礎: 〇〇",
+    "category": "営業",
+    "duration": "15分",
+    "description": "営業向けのAI活用基礎を学ぶコースです。",
+    "departments": ["営業"],
+    "video": "./videos/sales-001.mp4"
+  },
+  {
+    "id": "sales-002",
+    "title": "営業応用: 〇〇",
+    "category": "営業",
+    "duration": "20分",
+    "description": "提案・商談改善の実務テンプレートを学びます。",
+    "departments": ["営業", "その他"],
+    "video": "./videos/sales-002.mp4"
+  },
+  {
+    "id": "amazon-001",
+    "title": "Amazon運用基礎: 〇〇",
+    "category": "Amazon運用",
+    "duration": "18分",
+    "description": "Amazon運用の基本フローを学びます。",
+    "departments": ["運用"],
+    "video": "./videos/amazon-001.mp4"
+  },
+  {
+    "id": "amazon-002",
+    "title": "Amazon運用応用: 〇〇",
+    "category": "Amazon運用",
+    "duration": "22分",
+    "description": "分析と改善アクションの実践編です。",
+    "departments": ["運用", "経理・総務"],
+    "video": "./videos/amazon-002.mp4"
+  },
+  {
+    "id": "rakuten-001",
+    "title": "楽天運用基礎: 〇〇",
+    "category": "楽天運用",
+    "duration": "16分",
+    "description": "楽天運用の指標管理を学びます。",
+    "departments": ["運用"],
+    "video": "./videos/rakuten-001.mp4"
+  },
+  {
+    "id": "rakuten-002",
+    "title": "楽天運用応用: 〇〇",
+    "category": "楽天運用",
+    "duration": "20分",
+    "description": "RPP改善とページ最適化を扱います。",
+    "departments": ["運用", "営業"],
+    "video": "./videos/rakuten-002.mp4"
+  },
+  {
+    "id": "site-001",
+    "title": "自社サイト運用基礎: 〇〇",
+    "category": "自社サイト運用",
+    "duration": "14分",
+    "description": "自社サイト運用の基本を学ぶコースです。",
+    "departments": ["運用", "その他"],
+    "video": "./videos/site-001.mp4"
+  },
+  {
+    "id": "site-002",
+    "title": "自社サイト運用応用: 〇〇",
+    "category": "自社サイト運用",
+    "duration": "19分",
+    "description": "CV改善施策の実践編です。",
+    "departments": ["運用", "営業"],
+    "video": "./videos/site-002.mp4"
+  },
+  {
+    "id": "newhire-001",
+    "title": "新人研修基礎: 〇〇",
+    "category": "新人研修",
+    "duration": "12分",
+    "description": "AI利用の基礎と社内ルールを学びます。",
+    "departments": ["新人研修", "その他"],
+    "video": "./videos/newhire-001.mp4"
+  },
+  {
+    "id": "newhire-002",
+    "title": "新人研修応用: 〇〇",
+    "category": "新人研修",
+    "duration": "15分",
+    "description": "実務での安全運用パターンを学びます。",
+    "departments": ["新人研修", "経理・総務", "その他"],
+    "video": "./videos/newhire-002.mp4"
+  },
+  {
+    "id": "prompt-001",
+    "title": "プロンプト集基礎: 〇〇",
+    "category": "プロンプト集",
+    "duration": "11分",
+    "description": "全社共通で使えるプロンプトを学びます。",
+    "departments": ["新人研修", "営業", "運用", "経理・総務", "その他"],
+    "video": "./videos/prompt-001.mp4"
+  },
+  {
+    "id": "prompt-002",
+    "title": "プロンプト集応用: 〇〇",
+    "category": "プロンプト集",
+    "duration": "17分",
+    "description": "分析・要約・提案の応用テンプレートです。",
+    "departments": ["営業", "運用", "経理・総務", "その他"],
+    "video": "./videos/prompt-002.mp4"
+  },
+  {
+    "id": "marketing-001",
+    "title": "マーケティング用基礎: 〇〇",
+    "category": "マーケティング用",
+    "duration": "18分",
+    "description": "マーケ施策立案の基礎を学びます。",
+    "departments": ["運用", "営業"],
+    "video": "./videos/marketing-001.mp4"
+  },
+  {
+    "id": "marketing-002",
+    "title": "マーケティング用応用: 〇〇",
+    "category": "マーケティング用",
+    "duration": "21分",
+    "description": "SNS運用と改善サイクルを扱います。",
+    "departments": ["運用", "その他"],
+    "video": "./videos/marketing-002.mp4"
+  }
+]

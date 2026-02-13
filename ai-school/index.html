@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EEEEMO AI School</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/logo-icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-orb bg-orb-a"></div>
+  <div class="bg-orb bg-orb-b"></div>
+
+  <main class="page">
+    <section id="loginView" class="shell login-shell">
+      <div class="brand-block">
+        <img src="./assets/logo-main.svg" alt="EeeeMo AI School logo" class="brand-wordmark-lg" />
+        <p>社内向けAI人材育成プラットフォーム</p>
+      </div>
+
+      <form id="loginForm" class="panel login-panel">
+        <h2>ログイン</h2>
+        <label class="field">
+          <span>メールアドレス</span>
+          <input id="emailInput" type="email" required placeholder="name@eeeemo.co.jp" />
+        </label>
+        <label class="field">
+          <span>パスワード</span>
+          <input id="passwordInput" type="password" required placeholder="••••••••" />
+        </label>
+        <button type="submit" class="btn btn-primary">ログイン</button>
+        <p class="login-help">管理者: <code>admin@eeeemo.co.jp / admin123</code></p>
+        <p class="login-help">一般: <code>sales@eeeemo.co.jp / user123</code></p>
+        <p id="loginError" class="error hidden">ログイン情報が正しくありません。</p>
+      </form>
+    </section>
+
+    <section id="appView" class="shell app-shell hidden">
+      <header class="topbar panel">
+        <div class="brand-inline">
+          <div>
+            <p class="eyebrow">INTERNAL LEARNING PLATFORM</p>
+            <img src="./assets/logo-main.svg" alt="EeeeMo AI School logo" class="brand-wordmark-sm" />
+          </div>
+        </div>
+        <div class="user-box">
+          <p id="userMeta"></p>
+          <button id="logoutBtn" type="button" class="btn btn-ghost">ログアウト</button>
+        </div>
+      </header>
+
+      <nav class="tabs panel">
+        <button class="tab active" data-tab="learn" type="button">学習</button>
+        <button class="tab admin-only" data-tab="history" type="button">受講履歴管理</button>
+        <button class="tab" data-tab="curriculum" type="button">部署別カリキュラム</button>
+        <button class="tab" data-tab="assistant" type="button">AIチャット</button>
+      </nav>
+
+      <section id="learnTab" class="tab-pane active">
+        <div class="layout">
+          <aside class="panel sidebar">
+            <h2>コース一覧</h2>
+            <div id="courseSummary" class="course-summary"></div>
+            <div id="nextCourseCard" class="next-course-card"></div>
+            <div id="categoryLegend" class="category-legend"></div>
+            <label class="field">
+              <span>キーワード検索</span>
+              <input id="searchInput" type="search" placeholder="例: プロンプト" />
+            </label>
+            <label class="field">
+              <span>カテゴリ</span>
+              <select id="categorySelect">
+                <option value="all">すべて</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>部署</span>
+              <select id="departmentFilter">
+                <option value="all">全部署</option>
+              </select>
+            </label>
+            <ul id="courseList" class="course-list" aria-live="polite"></ul>
+          </aside>
+
+          <section class="panel content">
+            <div id="emptyState" class="empty-state">
+              <h2>コースを選択してください</h2>
+              <p>左の一覧から選ぶと動画を再生できます。</p>
+            </div>
+
+            <article id="courseDetail" class="course-detail hidden">
+              <div class="detail-header">
+                <h2 id="detailTitle"></h2>
+                <div class="meta-row">
+                  <span id="detailCategory" class="badge"></span>
+                  <span id="detailDuration" class="badge badge-ghost"></span>
+                  <span id="detailDepartments" class="badge badge-soft"></span>
+                  <button id="completeBtn" type="button" class="btn btn-primary">受講完了にする</button>
+                  <button id="startTestBtn" type="button" class="btn btn-ghost">テストを実行</button>
+                </div>
+                <p id="detailDescription"></p>
+                <div id="testStatus" class="test-status hidden"></div>
+              </div>
+
+              <div class="video-wrap">
+                <video id="videoPlayer" controls preload="metadata"></video>
+              </div>
+            </article>
+          </section>
+        </div>
+      </section>
+
+      <section id="historyTab" class="tab-pane">
+        <div class="panel history-panel admin-only">
+          <div class="history-head">
+            <h2>受講履歴管理</h2>
+            <div class="history-actions">
+              <button id="exportHistoryBtn" type="button" class="btn btn-ghost">JSONエクスポート</button>
+              <button id="resetUserBtn" type="button" class="btn btn-danger">選択ユーザー履歴を初期化</button>
+            </div>
+          </div>
+
+          <div class="history-layout">
+            <div>
+              <label class="field">
+                <span>対象ユーザー</span>
+                <select id="historyUserSelect"></select>
+              </label>
+              <table class="history-table">
+                <thead>
+                  <tr>
+                    <th>ユーザー</th>
+                    <th>部署</th>
+                    <th>完了数</th>
+                    <th>最終更新</th>
+                  </tr>
+                </thead>
+                <tbody id="historySummaryBody"></tbody>
+              </table>
+            </div>
+
+            <div>
+              <h3>詳細履歴</h3>
+              <ul id="historyDetailList" class="history-detail"></ul>
+            </div>
+          </div>
+
+          <div id="historyKpi" class="course-summary history-kpi"></div>
+
+          <div class="admin-test-panel">
+            <h3>動画準備ステータス</h3>
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>コース</th>
+                  <th>カテゴリ</th>
+                  <th>動画パス</th>
+                  <th>状態</th>
+                </tr>
+              </thead>
+              <tbody id="videoReadinessBody">
+                <tr><td colspan="4">確認中...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="admin-test-panel">
+            <h3>カテゴリ別合格率</h3>
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>カテゴリ</th>
+                  <th>合格数</th>
+                  <th>受験数</th>
+                  <th>合格率</th>
+                </tr>
+              </thead>
+              <tbody id="categoryPassBody"></tbody>
+            </table>
+          </div>
+
+          <div class="admin-test-panel">
+            <h3>未受講ユーザー一覧</h3>
+            <ul id="pendingUserList" class="history-detail"></ul>
+          </div>
+
+          <div class="admin-test-panel">
+            <h3>テスト履歴・通知</h3>
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>ユーザー</th>
+                  <th>コース</th>
+                  <th>回数</th>
+                  <th>点数</th>
+                  <th>結果</th>
+                  <th>受験日時</th>
+                </tr>
+              </thead>
+              <tbody id="testSummaryBody"></tbody>
+            </table>
+            <ul id="notificationList" class="history-detail"></ul>
+          </div>
+
+          <div class="admin-test-panel">
+            <h3>上長通知連携（Chatwork）</h3>
+            <div class="assignment-row integration-row">
+              <label class="field">
+                <span>Webhook Relay URL</span>
+                <input id="chatworkRelayUrl" type="url" placeholder="https://your-relay.example.com/chatwork" />
+              </label>
+              <label class="field">
+                <span>Chatwork Room ID</span>
+                <input id="chatworkRoomId" type="text" placeholder="123456789" />
+              </label>
+              <button id="saveIntegrationBtn" type="button" class="btn btn-primary">連携設定を保存</button>
+            </div>
+            <div class="test-actions">
+              <button id="testIntegrationBtn" type="button" class="btn btn-ghost">テスト通知送信</button>
+            </div>
+            <p id="integrationTestResult" class="login-help"></p>
+            <p class="login-help">注: APIトークンはブラウザに置かず、Relay側で管理してください。</p>
+          </div>
+
+          <div class="admin-test-panel">
+            <h3>テスト運用設定</h3>
+            <div class="assignment-row integration-row">
+              <label class="field">
+                <span>合格ライン（点）</span>
+                <input id="passScoreInput" type="number" min="0" max="100" />
+              </label>
+              <label class="field">
+                <span>再受験上限</span>
+                <input id="retakeLimitInput" type="number" min="1" max="20" />
+              </label>
+              <button id="savePolicyBtn" type="button" class="btn btn-primary">採点ポリシー保存</button>
+            </div>
+
+            <label class="field">
+              <span>問題編集カテゴリ</span>
+              <select id="testCategorySelect"></select>
+            </label>
+            <label class="field">
+              <span>問題JSON（question/options/answer）</span>
+              <textarea id="testQuestionEditor" rows="12"></textarea>
+            </label>
+            <div class="history-actions">
+              <button id="loadQuestionBtn" type="button" class="btn btn-ghost">読み込み</button>
+              <button id="saveQuestionBtn" type="button" class="btn btn-primary">保存</button>
+              <button id="resetQuestionBtn" type="button" class="btn btn-ghost">初期化</button>
+            </div>
+          </div>
+
+          <div class="admin-test-panel">
+            <h3>バックアップ / 復元</h3>
+            <div class="history-actions">
+              <button id="exportBackupBtn" type="button" class="btn btn-ghost">バックアップJSON</button>
+              <button id="weeklyExportBtn" type="button" class="btn btn-ghost">週次エクスポート</button>
+              <button id="exportCsvBtn" type="button" class="btn btn-ghost">CSVエクスポート</button>
+              <button id="importBackupBtn" type="button" class="btn btn-primary">バックアップ復元</button>
+            </div>
+            <input id="importBackupInput" type="file" accept="application/json" class="hidden" />
+          </div>
+
+          <div class="admin-test-panel">
+            <h3>ユーザーID / パスワード発行（管理者）</h3>
+            <div class="assignment-row">
+              <label class="field">
+                <span>氏名</span>
+                <input id="newUserNameInput" type="text" placeholder="例: 山田 太郎" />
+              </label>
+              <label class="field">
+                <span>メールアドレス（ログインID）</span>
+                <input id="newUserEmailInput" type="email" placeholder="name@eeeemo.co.jp" />
+              </label>
+              <label class="field">
+                <span>部署</span>
+                <select id="newUserDepartmentSelect"></select>
+              </label>
+            </div>
+            <div class="assignment-row">
+              <label class="field">
+                <span>初期パスワード</span>
+                <input id="newUserPasswordInput" type="text" placeholder="未入力なら user123" />
+              </label>
+              <label class="field">
+                <span>ロール</span>
+                <select id="newUserRoleSelect">
+                  <option value="member">一般</option>
+                  <option value="admin">管理者</option>
+                </select>
+              </label>
+              <button id="createUserBtn" type="button" class="btn btn-primary">個別発行</button>
+            </div>
+
+            <label class="field">
+              <span>CSV一括発行（name,email,department,password,role）</span>
+              <textarea id="bulkUserCsvInput" rows="6" placeholder="name,email,department,password,role&#10;鈴木 一郎,suzuki@eeeemo.co.jp,営業,user123,member"></textarea>
+            </label>
+            <div class="history-actions">
+              <button id="importUsersCsvBtn" type="button" class="btn btn-ghost">CSV一括発行</button>
+            </div>
+            <p id="userIssueResult" class="login-help"></p>
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>氏名</th>
+                  <th>メール</th>
+                  <th>部署</th>
+                  <th>ロール</th>
+                  <th>状態</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="userAccountBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="curriculumTab" class="tab-pane">
+        <div class="panel curriculum-panel">
+          <div class="curriculum-head">
+            <h2>部署別カリキュラム</h2>
+            <p>部署に最適化した学習ルートを確認できます。</p>
+          </div>
+
+          <div class="assignment admin-only">
+            <h3>部署割り当て管理（管理者）</h3>
+            <div class="assignment-row">
+              <label class="field">
+                <span>ユーザー</span>
+                <select id="assignUserSelect"></select>
+              </label>
+              <label class="field">
+                <span>部署</span>
+                <select id="assignDepartmentSelect"></select>
+              </label>
+              <button id="assignBtn" type="button" class="btn btn-primary">部署を更新</button>
+            </div>
+          </div>
+
+          <div id="curriculumCards" class="curriculum-cards"></div>
+        </div>
+      </section>
+
+      <section id="assistantTab" class="tab-pane">
+        <div class="panel assistant-panel">
+          <div class="curriculum-head">
+            <h2>蓄積型AIチャット</h2>
+            <p>コース情報・テスト問題・過去Q&Aを参照して回答します。</p>
+          </div>
+
+          <div class="assistant-layout">
+            <div class="assistant-chat">
+              <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+              <p id="chatHint" class="login-help">質問例: 営業向けの次コースは？ / 合格ラインは？ / Amazon運用の重点は？</p>
+              <div class="assistant-input-row">
+                <input id="chatInput" type="text" placeholder="質問を入力してください" />
+                <button id="sendChatBtn" type="button" class="btn btn-primary">送信</button>
+                <button id="clearChatBtn" type="button" class="btn btn-ghost">履歴クリア</button>
+              </div>
+            </div>
+
+            <div class="assistant-knowledge admin-only">
+              <h3>ナレッジ登録（管理者）</h3>
+              <div class="assignment">
+                <h3>AI連携設定（管理者）</h3>
+                <label class="field">
+                  <span>回答モード</span>
+                  <select id="aiModeSelect">
+                    <option value="hybrid">ハイブリッド（推奨）</option>
+                    <option value="local">ローカル蓄積のみ</option>
+                    <option value="gemini">Gemini優先</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>Gemini Relay URL</span>
+                  <input id="aiRelayUrlInput" type="url" placeholder="https://your-api.example.com/chat" />
+                </label>
+                <label class="field">
+                  <span>Gemini Model</span>
+                  <input id="aiModelInput" type="text" placeholder="gemini-1.5-flash" />
+                </label>
+                <label class="field">
+                  <span>日次上限（1ユーザーあたり）</span>
+                  <input id="aiDailyLimitInput" type="number" min="0" max="500" placeholder="20" />
+                </label>
+                <div class="history-actions">
+                  <button id="saveAiConfigBtn" type="button" class="btn btn-primary">AI設定を保存</button>
+                </div>
+                <p id="aiConfigHint" class="login-help"></p>
+              </div>
+
+              <label class="field">
+                <span>タイトル</span>
+                <input id="knowledgeTitleInput" type="text" placeholder="例: 営業提案の社内ルール" />
+              </label>
+              <label class="field">
+                <span>タグ（カンマ区切り）</span>
+                <input id="knowledgeTagsInput" type="text" placeholder="営業,提案,承認フロー" />
+              </label>
+              <label class="field">
+                <span>内容</span>
+                <textarea id="knowledgeContentInput" rows="7" placeholder="回答品質を上げたい社内ルールやFAQを登録"></textarea>
+              </label>
+              <div class="history-actions">
+                <button id="saveKnowledgeBtn" type="button" class="btn btn-primary">ナレッジ保存</button>
+              </div>
+              <ul id="knowledgeList" class="history-detail"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>動画追加: <code>/ai-school/videos/</code> に配置し、<code>courses.json</code> を更新してください。</p>
+      </footer>
+    </section>
+  </main>
+
+  <dialog id="testDialog" class="test-dialog">
+    <form id="testForm" method="dialog" class="test-form">
+      <header class="test-head">
+        <h3 id="testTitle">理解度テスト</h3>
+        <button type="button" id="closeTestBtn" class="btn btn-ghost">閉じる</button>
+      </header>
+      <div id="testQuestions" class="test-questions"></div>
+      <div class="test-actions">
+        <button type="submit" class="btn btn-primary">採点する</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

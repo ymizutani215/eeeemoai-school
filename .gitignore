@@ -1,0 +1,2 @@
+# Large video assets are managed outside Git (e.g. cloud storage)
+ai-school/videos/*.mp4

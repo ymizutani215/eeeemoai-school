@@ -89,13 +89,14 @@ const DEFAULT_AI_CHAT_CONFIG = {
   dailyLimitPerUser: 20
 };
 const FALLBACK_COURSES = [
-  { id: "fb-sales-001", title: "営業提案書ドラフト自動化", category: "営業", duration: "18分", description: "提案下書き生成の基本。", departments: ["営業"], video: "./videos/ai-sales-001.mp4" },
-  { id: "fb-amz-001", title: "Amazon商品ページ改善", category: "Amazon運用", duration: "22分", description: "訴求とキーワード最適化。", departments: ["運用"], video: "./videos/ai-amz-001.mp4" },
-  { id: "fb-rkt-001", title: "楽天RPP改善", category: "楽天運用", duration: "21分", description: "入札調整と効果検証。", departments: ["運用"], video: "./videos/ai-rkt-001.mp4" },
-  { id: "fb-site-001", title: "自社サイトFAQ生成", category: "自社サイト運用", duration: "13分", description: "問い合わせ起点のFAQ整備。", departments: ["運用", "その他"], video: "./videos/ai-site-001.mp4" },
-  { id: "fb-newbie-001", title: "新人向けAI活用基礎", category: "新人研修", duration: "15分", description: "安全利用の入門。", departments: ["新人研修", "その他"], video: "./videos/ai-newbie-001.mp4" },
-  { id: "fb-prompt-001", title: "要約プロンプト集", category: "プロンプト集", duration: "11分", description: "再利用可能なテンプレート。", departments: ["営業", "運用", "経理・総務", "その他", "新人研修"], video: "./videos/ai-prompt-001.mp4" },
-  { id: "fb-mkt-001", title: "マーケ戦略立案高速化", category: "マーケティング用", duration: "23分", description: "目的/KPI起点の施策案作成。", departments: ["運用", "営業"], video: "./videos/ai-mkt-001.mp4" }
+  { id: "fb-prompt-003", title: "プロンプトの黄金フォーマット", category: "プロンプト集", duration: "14分", description: "高品質な出力を安定して得るためのプロンプト構造を実例で解説。", departments: ["営業", "運用", "経理・総務", "その他", "新人研修"], video: "./videos/動画03_プロンプトの黄金フォーマット_pdf.mp4" },
+  { id: "fb-ops-004", title: "業務効率化テクニック集", category: "プロンプト集", duration: "16分", description: "業務短縮に効く分解・テンプレ化・再利用の進め方。", departments: ["営業", "運用", "経理・総務", "その他"], video: "./videos/動画04_業務効率化テクニック集_pdf.mp4" },
+  { id: "fb-idea-005", title: "壁打ちブレインストーミング技術", category: "プロンプト集", duration: "15分", description: "AI壁打ちで論点整理と施策案を具体化する手順。", departments: ["営業", "運用", "その他"], video: "./videos/動画05_壁打ちブレインストーミング技術_pdf.mp4" },
+  { id: "fb-amz-006", title: "Seller Centralの歩き方", category: "Amazon運用", duration: "18分", description: "主要メニューと運用で迷わない確認ポイントを解説。", departments: ["運用", "営業"], video: "./videos/動画06_SellerCentralの歩き方_pdf.mp4" },
+  { id: "fb-amz-007", title: "AIで書く売れる商品紹介コンテンツ", category: "Amazon運用", duration: "20分", description: "売れる商品紹介文の構成テンプレートと作成手順。", departments: ["運用", "営業"], video: "./videos/動画07_AIで書く売れる商品紹介コンテンツ_pdf.mp4" },
+  { id: "fb-amz-008", title: "FBA納品手続きと物流の基本", category: "Amazon運用", duration: "17分", description: "FBA納品準備から物流運用の注意点までを基礎整理。", departments: ["運用", "経理・総務"], video: "./videos/動画08_FBA納品手続きと物流の基本_pdf.mp4" },
+  { id: "fb-amz-009", title: "スポンサープロダクト広告の基礎", category: "Amazon運用", duration: "19分", description: "広告設計、入札、改善サイクルの基本を実務目線で解説。", departments: ["運用", "営業", "経理・総務"], video: "./videos/動画09_スポンサープロダクト広告の基礎_pdf.mp4" },
+  { id: "fb-rkt-010", title: "RMSとRCabinetの基本操作", category: "楽天運用", duration: "16分", description: "RMS/RCabinetの基本操作と運用ミスを防ぐ管理ポイント。", departments: ["運用", "営業"], video: "./videos/動画10_RMSとRCabinetの基本操作_pdf.mp4" }
 ];
 
 function q(question, options, answer) {

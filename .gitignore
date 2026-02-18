@@ -1,2 +1,6 @@
-# Large video assets are managed outside Git (e.g. cloud storage)
+# Large video assets are managed outside Git (cloud deploy only)
 ai-school/videos/*.mp4
+
+# Local Firebase artifacts / logs
+ai-school/.firebase/
+ai-school/firebase-debug.log
